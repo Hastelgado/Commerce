@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Listings from "{{category|capfirst}}"</h2>
+
+    <ul id="category">
+    {% for list in listings %}
+    <ul>
+        <li>Title: <a href="{% url 'list' list.id %}">{{list.title}}</a></li>
+            {% if list.imageurl %}
+            <li><img src="{{list.imageurl}}"></li>
+            {% endif %}
+            <li>Starting Bid: ${{list.price}}</li>
+            <li>Category: {{list.category|capfirst}}</li>
+            <li>Product Description: {{list.desc}}</li>
+    </ul>
+    {% empty %}
+
+    <h2>No listings for this category currently exists!</h2>
+
+    {% endfor %}
+    </ul>
+
+{% endblock %}

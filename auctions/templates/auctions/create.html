@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Create Listing</h2>
+
+        <form id="createlist" action="{% url 'create' %}" method="post">
+            {% csrf_token %}
+            <input class="form-control" type="text" name="title" placeholder="Enter title">
+            <input class="form-control" type="number" name="price" placeholder="Price">
+            <input class="form-control" type="url" name="imageurl" placeholder="Enter Img Url">
+            <select class="form-control" name="category">
+                {% for category in catlist %}
+                <option value="{{category}}">{{category|capfirst}}</option>
+                {% endfor %}
+            </select>
+
+            <textarea class="form-control" name="desc" placeholder="Enter description"></textarea>
+            <input class="btn btn-primary" type="submit" value="Create">
+        </form>
+    
+{% endblock %}

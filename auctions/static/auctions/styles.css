@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    background-color: rgba(71, 71, 71, 0.801);
+}
+
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+    transition: all 0.1s ease-in-out;
+}
+
+a:hover{
+    color: rgb(255, 230, 0);
+    text-decoration: none;
+}
+
+body h1{
+    color: aliceblue;
+}
+
+body h2{
+    color: aliceblue;
+    padding: 15px 0 0 15px;
+}
+
+body h3{
+    color: aliceblue;
+
+}
+
+body h4{
+    color: aliceblue;
+
+}
+
+body h5{
+    color: aliceblue;
+
+}
+
+.nbar{
+    background-color: rgb(37, 37, 37);
+    margin: 0;
+    padding: 5px 0px 5px 20px;
+    color: aliceblue;
+    
+}
+
+#listings{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: square;
+    font-size: 25px;
+    padding: 0px;
+    margin-left: 200px;
+    margin-right: 200px;
+
+}
+
+#listings ul{
+    list-style-type: none;
+    font-size: 15px;
+
+}
+
+.list-items{
+    width: 500px;
+    height: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.inner-listing{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 0px;
+}
+
+.inner-listing ul{
+    padding: 0px;
+}
+
+.inner-listing a{
+    font-size: 25px;
+}
+
+.inner-listing img{
+    max-width: 200px;
+    height: auto;
+}
+
+.inner-listing-img li a{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.inner-listing-text{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 40px;
+
+}
+
+.inner-listing-text li{
+    font-size: 16px;
+    font-weight: 500;
+    color: aliceblue;
+}
+
+/*-----------------------------------------------------Index Page and Navbar^^^^-----------------------------------*/
+
+#loginform{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+}
+
+#loginform input{
+    width: 500px;
+}
+
+#registerform{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+}
+
+#registerform input{
+    width: 500px;
+}
+
+#createlist{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+}
+
+#createlist{
+    width: 500px;
+}
+
+/*-----------------------------------------------------Login Register Createlist forms^^^^-----------------------------------*/
+
+#categories{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+#categories li a{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+#category{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: square;
+    font-size: 25px;
+    padding: 0px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+#category li{
+    list-style-type: none;
+    font-size: 20px;
+
+}
+
+#category a{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+#category img{
+    max-width: 200px;
+    height: auto;
+}
+
+/*-----------------------------------------------------Category pages^^^^-----------------------------------*/
+
+.listpage{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style-type: none;
+}
+
+.listpage img{
+    max-width: 200px;
+    height: auto;
+}
+
+.listpage li{
+    font-size: 16px;
+    font-weight: 600;
+    color: aliceblue;
+}
+
+.listpage form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.listpage input{
+    width: 500px;
+}
+
+.listpage textarea{
+    width: 500px;
+}
+
+#bids{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+#bidlist{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/*-----------------------------------------------------List page^^^^-----------------------------------*/
+
+#watchlist{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: square;
+    font-size: 25px;
+    padding: 0px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.watchlist-item{
+    width: 500px;
+    height: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.watchlist-item li{
+    font-size: 16px;
+    color: aliceblue;
+    list-style-type: none;
+}
+
+.watchlist-item a{
+    font-size: 25px;
+    color: aliceblue;
+
+}
+
+.watchlist-item img{
+    max-width: 200px;
+    height: auto;
+
+}
+
+/*-----------------------------------------------------Watchlist^^^^-----------------------------------*/

@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    <ol id="listings">
+        {% for list in lists %}
+            <li class="list-items">
+                <ul class="inner-listing">
+                    <ul class="inner-listing-img">
+                        <li><a href="{% url 'list' list.id %}">{{list.title}}</a></li>
+                        {% if list.imageurl %}
+                            <li><img src="{{list.imageurl}}"></li>
+                        {% endif %}
+                    </ul>
+                    <ul class="inner-listing-text">
+                        <li>Starting Bid: ${{list.price}}</li>
+                        <li>Category: {{list.category|capfirst}}</li>
+                        <li>Product Description: {{list.desc}}</li>
+                    </ul>
+                </ul>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

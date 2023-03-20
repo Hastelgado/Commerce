@@ -1,0 +1,100 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>{{list.title}} Listing</h2>
+
+        <ul class="listpage">
+            <li>Title: {{list.title}}</li>
+            {% if list.imageurl %}
+            <li><img src="{{list.imageurl}}"></li>
+            {% endif %}
+            <li>Starting Bid: ${{list.price}}</li>
+            <li>Category: {{list.category|capfirst}}</li>
+            <li>Product Description: {{list.desc}}</li>
+
+{% if list.activity == True %}
+
+            {% if item %}
+            <input type="submit" value="Already on watchlist!" disabled>
+            {% else %}
+            <form action="{% url 'watch' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="listid" value="{{list.id}}">
+                <input class="btn btn-primary" type="submit" value="Add to Watchlist">
+            </form>
+            {% endif %}
+            {% if list.user.username == username %}
+            <form action="{% url 'bidding' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="closebid" value=1>
+                <input type="hidden" name="listid" value="{{list.id}}">
+                {% if bids %}
+                <input class="btn btn-primary" type="submit" value="Close Auction">
+                {% endif %}
+            </form>
+            {% else %}
+            <form action="{% url 'bidding' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="placebid" value=1>
+                <input type="hidden" name="listid" value="{{list.id}}">
+                <input class="form-control" type="number" name="bidamount" placeholder="Enter Amount">
+                <input class="btn btn-primary" type="submit" value="Place Bid">
+            </form>
+            {% endif %}
+        </ul>
+        <ul id="bids">
+        {% for bid in bids %}
+
+            <div id="bid-list">
+                <h3>{{bid.user.username}}</h3>
+                <h5>Bid Amount: {{bid.amount}}$</h5>
+            </div>
+            {% if bid.user.username == username %}
+            <form action="{% url 'bidding' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="deletebid" value=1>
+                <input type="hidden" name="listid" value="{{list.id}}">
+                <input class="btn btn-primary" type="submit" value="Remove Bid">
+            </form>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+{% else %}
+
+        <h2>This auction has been settled and closed.</h2>
+
+        {% if winningbid.user.username == username %}
+        <h3>Congratulations {{username}}, you've won the auction with your bid of {{winningbid.amount}}$!</h3>
+        {% endif %}
+
+{% endif %}
+
+        <ul class="listpage">
+
+            <form action="{% url 'commenting' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="addcomment" value=1>
+                <input type="hidden" name="listid" value="{{list.id}}">
+                <textarea class="form-control" name="commentarea" placeholder="Enter your comment here..."></textarea>
+                <input class="btn btn-primary" type="submit" value="Comment">
+            </form>
+
+            {% for comment in comments %}
+
+            <h4>{{comment.user.username}} says:</h4>
+            <h5>"{{comment.text}}"</h5>
+            {% if comment.user.username == username %}
+            <form action="{% url 'commenting' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="deletecomment" value=1>
+                <input type="hidden" name="listid" value="{{list.id}}">
+                <input type="hidden" name="commentid" value="{{comment.id}}">
+                <input class="btn btn-primary" type="submit" value="Delete">
+            </form>
+            {% endif %}
+            
+            {% endfor %}
+        </ul>
+
+{% endblock %}

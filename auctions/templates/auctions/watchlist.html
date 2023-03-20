@@ -1,0 +1,34 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2> {{username}}'s Watchlist </h2>
+        <ul id="watchlist">
+        {% if watchlist %}
+            {% for list in watchlist %}
+            <ul class="watchlist-item">
+                <li>Title: <a href="{% url 'list' list.id %}">{{list.title}}</a></li>
+                {% if list.imageurl %}
+                    <li><img src="{{list.imageurl}}"></li>
+                {% endif %}
+                <li>Starting Bid: ${{list.price}}</li>
+                <li>Category: {{list.category|capfirst}}</li>
+                <li>Product Description: {{list.desc}}</li>
+                <li>
+                    <form action="{% url 'removefromwatch' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="listid" value="{{list.id}}">
+                        <input class="btn btn-primary" type="submit" value="Remove from Watchlist">
+                    </form>
+                </li>
+            </ul>
+            {% empty %}
+                <h2>Your watchlist is currently empty!</h2>
+            {% endfor %}
+        {% else %}
+
+            <h2>No Watchlist items found yet! Please add some.</h2>
+
+        {% endif %}
+        </ul>
+
+{% endblock %}
